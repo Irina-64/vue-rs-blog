@@ -1,0 +1,66 @@
+[
+  {
+    "_id": {
+      "$oid": "680766c59ff5298905e92f6b"
+    },
+    "title": "Почему разработчики застревают в дебаге: когнитивные ловушки и как их обойти",
+    "image": "https://fastly.picsum.photos/id/1/280/150.jpg?hmac=abc123",
+    "content": "Дебаг — это 80% времени разработчика, но мозг работает против нас. Вот 5 когнитивных ловушек и техники их обхода.\n\nОсновные ловушки дебага\n   Ту tunnel vision. Фиксация на одной гипотезе («должно быть в API») — игнорируем другие ветки кода.\n   Confirmation bias. Ищем только подтверждения своей теории, пропускаем противоречия.\n   Context switching penalty. Переключение между задачами +30% к времени поиска бага.\n   Rubber duck effect игнорируем. Объяснение проблемы коллеге/утке выявляет 70% багов за 5 минут.\n\nАлгоритм эффективного дебага (5 шагов)\n   1) Rubber duck 2 минуты. Объясните проблему вслух — баг часто виден сразу.\n   2) Binary search через console.log. Логируйте вход/выход каждой функции — баг сузится до 1 строки.\n   3) Network + Elements панели. 60% багов frontend в запросах/состоянии DOM.\n   4) Git bisect для исторических багов. Автоматически найдёт коммит с ошибкой.\n   5) Screenshot до/после. Визуальный diff выявляет CSS/State баги мгновенно.\n\nИнструменты, которые экономят часы\n   React DevTools Profiler — утечки состояния\n   Vue DevTools Timeline — перерендеры\n   Chrome Performance — медленные запросы\n   VS Code Problems панель — синтаксис + линтер\n\nВывод: дебаг — это не поиск ошибки, а систематическое исключение гипотез. Мозг ленится — компенсируйте чеклистами.",
+    "comments": [],
+    "createdAt": {
+      "$date": "2025-10-15T14:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-15T14:30:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "680766c59ff5298905e92f6c"
+    },
+    "title": "ИИ уже пишет код лучше junior: как ChatGPT/Claude меняют найм и обучение",
+    "image": "https://fastly.picsum.photos/id/2/280/150.jpg?hmac=def456",
+    "content": "ИИ генерирует 70% boilerplate кода. Junior-разработчики теперь учатся не писать, а проверять и улучшать.\n\nЧто ИИ делает лучше junior (2025)\n   CRUD API на Express/Fastify — 2 минуты\n   React компоненты с Tailwind — 30 секунд\n   SQL запросы по схеме — без ошибок JOIN\n   Vue Router + Pinia setup — production-ready\n\nЧто ИИ пока не умеет\n   Архитектура монолита/микросервисов\n   Performance optimization (90% случаев)\n   Security: SSRF, XSS, SQLi паттерны\n   Domain-driven design и бизнес-логика\n\nНовый workflow разработчика\n   1) ИИ → scaffolding + типы\n   2) Человек → архитектура + edge cases\n   3) ИИ → unit тесты по спецификации\n   4) Человек → code review + рефакторинг\n\nПрактика: промпты, которые работают\n   'Напиши React компонент со стилями Tailwind, типами TypeScript, обработкой ошибок и тестами'\n   'Создай FastAPI эндпоинт с Pydantic схемой, валидацией, кэшированием Redis и логами'\n   'Vue 3 Composition API компонент с Pinia store, error boundaries и skeleton loading'\n\nБудущее найма\nJunior: умеет читать/улучшать ИИ-код\nMiddle: архитектура + ревью ИИ\nSenior: бизнес-домен + системный дизайн",
+    "comments": [],
+    "createdAt": {
+      "$date": "2025-10-16T09:15:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-16T09:15:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "680766c59ff5298905e92f6d"
+    },
+    "title": "TypeScript: типы, которые спасут 90% runtime ошибок (примеры)",
+    "image": "https://fastly.picsum.photos/id/3/280/150.jpg?hmac=ghi789",
+    "content": "TypeScript без utility types — как швейцарский нож без насадок. Вот 7 шаблонов для ежедневного использования.\n\n1. Deep Partial (рекурсивный Partial)\n```ts\ntype DeepPartial<T> = {\n  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]\n}\n```\n\n2. PromiseValue (извлечение типа из Promise)\n```ts\ntype PromiseValue<T> = T extends Promise<infer U> ? U : T\n```\n\n3. UnionToIntersection\n```ts\ntype UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never\n```\n\n4. FunctionParams\n```ts\ntype FunctionParams<T extends Function> = T extends (...args: infer P) => any ? P : never\n```\n\n5. NonNullableChain\n```ts\ntype NonNullableChain<T> = T extends any ? NonNullable<T> : never\n```\n\n6. LiteralUnion (строки + конкретные значения)\n```ts\ntype LiteralUnion<T extends string, U extends string> = T | U\n```\n\n7. Record с дефолтными значениями\n```ts\nconst withDefaults = <T extends Record<string, any>>(obj: T, defaults: Partial<T>): T =>\n  ({ ...defaults, ...obj } as T)\n```\n\nПрактика: замените any на эти utility types — runtime ошибок станет меньше в 3 раза.",
+    "comments": [],
+    "createdAt": {
+      "$date": "2025-10-17T11:45:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-17T11:45:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "680766c59ff5298905e92f6e"
+    },
+    "title": "Vite vs Webpack 2026: когда какой использовать (спойлер: почти всегда Vite)",
+    "image": "https://fastly.picsum.photos/id/4/280/150.jpg?hmac=jkl012",
+    "content": "Vite — 10x быстрее cold start, HMR за 20мс, плагины проще. Webpack жив только в legacy.\n\nVite выигрывает\n   Build time: 2с vs 20с\n   HMR: мгновенный vs 2-5с\n   DX: ESM native, нет конфига\n   Bundle размер: на 15% меньше\n\nWebpack только когда\n   Legacy браузеры (<0.1% пользователей)\n   Динамические импорты на этапе сборки\n   Сложная кастомная конфигурация\n\nМиграция (3 шага)\n   1) `npm create vite@latest`\n   2) Перенос `src/` и `public/`\n   3) Плагины: `@vitejs/plugin-vue` / `vite-plugin-svelte`\n\nVite + фреймворки\n   Vue 3: из коробки\n   React: `vite-plugin-react`\n   Svelte: `vite-plugin-svelte`\n   Solid: `vite-plugin-solid`\n\nЭкосистема плагинов\n   `vite-plugin-ssr` — fullstack\n   `vite-plugin-pwa` — PWA\n   `vite-tsconfig-paths` — алиасы\n   `vite-plugin-inspect` — бандл анализ",
+    "comments": [],
+    "createdAt": {
+      "$date": "2025-10-18T16:20:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2025-10-18T16:20:00.000Z"
+    },
+    "__v": 0
+  }
+]
